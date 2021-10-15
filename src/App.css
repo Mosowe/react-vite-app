@@ -1,0 +1,21 @@
+.page{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.content{
+  flex: 1;
+  overflow-y: auto;
+}
+.footer{
+  height: 50px;
+  display: flex;
+  line-height: 50px;
+  text-align: center;
+  justify-content: space-around;
+  border-top: 1px solid #eee;
+}
+.item.active{
+  color: #ff0000;
+  font-weight: bold;
+}
