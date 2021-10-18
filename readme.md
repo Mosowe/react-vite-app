@@ -1,3 +1,5 @@
+基于移动端的配置。
+
 ## 安装
 
 ### vite及react框架安装
@@ -1022,9 +1024,27 @@ export default defineConfig({
 })
 ```
 
-## 组件
+## [Ant Design Mobile](https://antd-mobile.gitee.io/)
 
-## UI
+### 安装
+
+`npm install --save antd-mobile@next`
+
+### 使用
+
+```tsx
+import { Button,Input } from 'antd-mobile'
+function About() {
+  return (
+    <div>
+      <Button color="primary">123</Button>
+      <Input placeholder='请输入内容'/>
+    </div>
+  )
+}
+
+export default About
+```
 
 ## typing.d.ts
 
@@ -1040,23 +1060,5 @@ declare module '***'
 
 ## vite.config.ts
 
-### 配置别名
-
-```typescript
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-const path = require("path");
-
-// https://vitejs.dev/config/
-export default defineConfig({
-    // ***
-  resolve: {
-    alias: {
-      '@':path.resolve(__dirname, "src")
-    }
-  }
-})
-```
-
-
+[官方文档](https://cn.vitejs.dev/config/)
 

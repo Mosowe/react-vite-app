@@ -8,14 +8,18 @@
   overflow-y: auto;
 }
 .footer{
-  height: 50px;
+  height: 100px;
   display: flex;
-  line-height: 50px;
+  line-height: 100px;
   text-align: center;
   justify-content: space-around;
   border-top: 1px solid #eee;
-}
-.item.active{
-  color: #ff0000;
-  font-weight: bold;
+  .item{
+    flex: 1;
+    font-size: 14px;
+    &.active{
+      color: @mainColor;
+      font-weight: bold;
+    }
+  }
 }
