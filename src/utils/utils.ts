@@ -41,3 +41,17 @@ export const replaceStar = (val:any, head = 3, last = 4) => {
   let re = new RegExp('(.{' + head + '}).*(.{' + last + '})', ''); // 动态的正则验证
   return val.replace(re, '$1'+str+'$2'); // 替换
 };
+
+/** 
+ * 数字三位加逗号
+ * @value 数据
+*/
+export const numberFormat = (value:[number,string]) => {
+  if(value !== undefined && value !== null) {
+    let str = value.toString();
+    let reg = str.indexOf('.') > -1 ? /(\d)(?=(\d{3})+\.)/g : /(\d)(?=(?:\d{3})+$)/g;
+    return str.replace(reg, '$1,');
+  } else {
+    return  '';
+  }
+};

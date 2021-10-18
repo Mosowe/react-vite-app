@@ -10,6 +10,7 @@
   "dependencies": {
     "antd-mobile": "^5.0.0-beta.17",
     "axios": "^0.23.0",
+    "hox": "^1.1.4",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },

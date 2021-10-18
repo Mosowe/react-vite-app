@@ -1,5 +1,13 @@
 基于移动端的配置。
 
+[vite官网](https://cn.vitejs.dev/guide/why.html)
+
+优点：
+
+> 1. 光速启动
+> 2. 热模块替换
+> 3. 按需编译
+
 ## 安装
 
 ### vite及react框架安装
@@ -1046,6 +1054,76 @@ function About() {
 export default About
 ```
 
+## 状态管理hox
+
+蚂蚁金服的react状态管理器[文档](https://github.com/umijs/hox/blob/master/README-cn.md)：
+
+- 只有一个 API，简单高效，几乎无需学习成本
+- 使用 custom Hooks 来定义 model，完美拥抱 React Hooks
+- 完美的 TypeScript 支持
+- 支持多数据源，随用随取
+
+### 安装
+
+`npm install --save hox`
+
+### 使用
+
+1. 新建store/store.ts文件:
+
+   ```typescript
+   import { useState } from "react";
+   import { createModel } from "hox";
+   
+   function useCounter() {
+     const [count, setCount] = useState(0);
+     const decrement = (num?:number) => setCount(typeof num !== 'number' ? count - 1 : count - num);
+     const increment = (num?:number) => setCount(typeof num !== 'number' ? count + 1 : count + num);
+     return {
+       count,
+       decrement,
+       increment
+     };
+   }
+   
+   export default createModel(useCounter);
+   ```
+
+2. home.tsx
+
+   ```tsx
+   import {useEffect} from 'react'
+   import useCounterModel from '@/store/store'
+   import { withRouter, Link } from 'react-router-dom'
+   import { Button } from 'antd-mobile'
+   function Home(props: any) {
+     const model = useCounterModel()
+   
+     useEffect(() => {
+       console.log('值变了')
+     }, [model.count])
+   
+     return (
+       <div className="Home">
+         {model.count}
+         <Button color="danger" onClick={() => { 
+           model.increment()
+         }}>加个数</Button>
+         <Button color="danger" onClick={() => { 
+           model.decrement()
+         }}>减一下</Button>
+         <Button color="danger" onClick={() => { 
+           model.increment(20)
+         }}>加20</Button>
+       </div>
+     )
+   }
+   
+   export default withRouter(Home)
+   ```
+
+更多文献参考[文档](https://github.com/umijs/hox/blob/master/README-cn.md)
+
 ## typing.d.ts
 
 全局的声明文件
@@ -1062,3 +1140,7 @@ declare module '***'
 
 [官方文档](https://cn.vitejs.dev/config/)
 
+## 其他
+
+1. utils/regexp.ts：常用几个正则表达式；
+2. utils/utils.ts：sessionStorage封装，数据*号替换，数字三位加逗号
