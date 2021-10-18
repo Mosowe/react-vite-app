@@ -6,13 +6,13 @@
 
 选项：
 
-![image-20211013104821629](./vite+react学习记录.assets/image-20211013104821629.png)
+![image-20211013104821629](./readme.assets/image-20211013104821629.png)
 
-![image-20211013104921456](./vite+react学习记录.assets/image-20211013104921456.png)
+![image-20211013104921456](./readme.assets/image-20211013104921456.png)
 
 安装完成：
 
-![image-20211013105002876](./vite+react学习记录.assets/image-20211013105002876.png)
+![image-20211013105002876](./readme.assets/image-20211013105002876.png)
 
 > 1. Project name：项目名称，也是文件夹名
 > 2. Select a framework：选择框架，目录中有vue及react，其他的没见过，相关模板框架结构[访问这里](https://github.com/vitejs/vite/tree/main/packages/create-vite )
@@ -20,7 +20,7 @@
 
 目录结构：
 
-![image-20211013105643001](./vite+react学习记录.assets/image-20211013105643001.png)
+![image-20211013105643001](./readme.assets/image-20211013105643001.png)
 
 vite.config.ts：配置文件，相关参数[访问这里](https://cn.vitejs.dev/config/) 
 
@@ -38,15 +38,15 @@ vite.config.ts：配置文件，相关参数[访问这里](https://cn.vitejs.dev
 
 运行如图：
 
-![image-20211013111836470](./vite+react学习记录.assets/image-20211013111836470.png)
+![image-20211013111836470](./readme.assets/image-20211013111836470.png)
 
 查看运行环境：
 
-![image-20211013112129741](./vite+react学习记录.assets/image-20211013112129741.png)
+![image-20211013112129741](./readme.assets/image-20211013112129741.png)
 
 发现`process`红色波浪线，按照提示安装`@types/node`，此包包含Node.js的类型定义。
 
-![image-20211013112207379](./vite+react学习记录.assets/image-20211013112207379.png)
+![image-20211013112207379](./readme.assets/image-20211013112207379.png)
 
 `npm i --save-dev @types/node`
 
@@ -58,13 +58,13 @@ vite.config.ts：配置文件，相关参数[访问这里](https://cn.vitejs.dev
 
 看看目录结构：
 
-![image-20211013160056136](./vite+react学习记录.assets/image-20211013160056136.png)
+![image-20211013160056136](./readme.assets/image-20211013160056136.png)
 
 js、css、图片全都在一个assets文件夹下。
 
 看看html文件：
 
-![image-20211013113110514](./vite+react学习记录.assets/image-20211013113110514.png)
+![image-20211013113110514](./readme.assets/image-20211013113110514.png)
 
 相关的一些引入全是`/assets`开头，如果不是放在服务器根目录，这样我们看到的就是空白页面，所以要修改配置文件`vite.config.ts`
 
@@ -78,7 +78,7 @@ export default defineConfig({
 
 添加base配置后：
 
-![image-20211013113901035](./vite+react学习记录.assets/image-20211013113901035.png)
+![image-20211013113901035](./readme.assets/image-20211013113901035.png)
 
 如果有些静态文件不想被hash，只是想用url，可以自定义一个[public文件夹](https://cn.vitejs.dev/guide/assets.html#the-public-directory)
 
@@ -86,7 +86,7 @@ export default defineConfig({
 
 先看看`package.json`里面的打包命令：
 
-![image-20211013114024865](./vite+react学习记录.assets/image-20211013114024865.png)
+![image-20211013114024865](./readme.assets/image-20211013114024865.png)
 
 就这三个，`npm run dev`（env=development）、`npm run serve`(本地预览服务env=production)、`npm run build`(env=production)
 
@@ -212,7 +212,7 @@ export default withRouter(User)
 
 我还是参考vue的路由格式来，配置router.tsx，引入`react-router-dom`，红色波浪线提示：
 
-![image-20211014093421967](./vite+react学习记录.assets/image-20211014093421967.png)
+![image-20211014093421967](./readme.assets/image-20211014093421967.png)
 
 此时需要在vite-react根目录新建一个typing.d.ts文件作为全局的声明文件，并做如下配置：
 
@@ -255,7 +255,7 @@ export default defineConfig({
 
 在router.tsx中引入组件:
 
-![image-20211014095549023](./vite+react学习记录.assets/image-20211014095549023.png)
+![image-20211014095549023](./readme.assets/image-20211014095549023.png)
 
 此时又有了红色波浪线，处理方式同`react-router-dom`，在typing.d.ts文件内：
 
@@ -489,7 +489,7 @@ export default withRouter(User)
 
 大概这样子：
 
-![image-20211015180908300](./vite+react学习记录.assets/image-20211015180908300.png)
+![image-20211015180908300](./readme.assets/image-20211015180908300.png)
 
 ## axios通信
 
@@ -726,14 +726,15 @@ export default withRouter(User)
 
    
 
-4. `url.ts`：接口路径配置文件
+4. `url.ts`：接口路径配置文件，分环境接口地址
 
    ```typescript
    let url = ''
    switch (process.env.NODE_ENV) { 
-     case 'development': url = "http://127.0.0.1:9999"; break;
-     case 'test': url = "http://127.0.0.1:9999"; break;
-     default:  url = "http://127.0.0.1:9999"; break;
+     case 'development': url = "http://127.0.0.1:9999"; break; // 开发
+     case 'test': url = "http://127.0.0.1:9999"; break; // 测试
+     case 'production': url = "http://10.21.1.104:9999"; break; // 生产
+     default:  url = "http://127.0.0.1:9999"; break;// 其他
    }
    export default url
    ```
@@ -753,7 +754,7 @@ export default withRouter(User)
      return request.get(params)
    }
    // 重置密码
-   export const resetPassword = (name:any) => { 
+   export const resetPassword = (name:string) => { 
      let params = {
        url: api.loginUserResetPassword,
        data: {
@@ -870,15 +871,156 @@ export default withRouter(User)
    export default withRouter(User)
    ```
 
-   ![image-20211015180829244](./vite+react学习记录.assets/image-20211015180829244.png)
+   ![image-20211015180829244](./readme.assets/image-20211015180829244.png)
 
 
-
-## 状态管理
 
 ## CSS及LESS
 
+### css
+
+在about文件夹内新建`index.css`：
+
+```css
+.App{
+  color: #ff0000;
+}
+.text{
+  font-size: 30px;
+}
+```
+
+并引入`about.tsx`文件：
+
+```tsx
+import './index.css'
+function About() {
+  return (
+    <div className="App">
+      <p className="text">about</p>
+    </div>
+  )
+}
+
+export default About
+```
+
+效果如图：
+
+![image-20211018093501175](E:\my\vite\vite-react\readme.assets\image-20211018093501175.png)
+
+这样有个问题，如果我在其他组件内也有相同的class类名，那么样式将会相互影响。
+
+改进：
+
+> 1. 将index.css改为：`index.module.css`：任何以 `.module.css` 为后缀名的 CSS 文件都被认为是一个 [CSS modules 文件](https://github.com/css-modules/css-modules)。导入这样的文件会返回一个相应的模块对象：[官方](https://cn.vitejs.dev/guide/features.html#css-modules)
+> 2. 使用：
+>    ![image-20211018094305526](E:\my\vite\vite-react\readme.assets\image-20211018094305526.png)
+
+### less
+
+#### 安装less
+
+`npm install -D less`
+
+[官方文档](https://cn.vitejs.dev/guide/features.html#css-pre-processors)
+
+#### 使用
+
+将上面的`index.module.css`更改后缀为`index.module.less`即可使用less语法
+
+### 配置全局less变量
+
+在/src目录下新建`global.less`文件：
+
+```less
+/**
+less全局变量 
+*/
+
+@mainColor: #ff0000;
+@textColor: #666;
+```
+
+在`vite.config.ts`中配置：
+
+```typescript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+const path = require("path");
+
+export default defineConfig({
+  plugins: [react()],
+  // ... 其他配置
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+        additionalData: `@import "${path.resolve(__dirname, 'src/global.less')}";`
+      }
+    }
+  }
+})
+```
+
+## 浏览器前缀
+
+### 安装
+
+`npm install autoprefixer postcss -D`
+
+### 使用
+
+在`vite.config.ts`中配置：
+
+```typescript
+export default defineConfig({
+  // ...其他配置
+  css: {
+      // ...其他配置
+    postcss: {
+      plugins: [
+        require("autoprefixer")
+      ]
+    }
+  }
+})
+```
+
 ## 移动端单位换算
+
+这里使用的插件是：`postcss-px-to-viewport`
+
+### 安装
+
+`npm install postcss-px-to-viewport --save-dev`
+
+### 使用
+
+在`vite.config.ts`中配置：
+
+```typescript
+export default defineConfig({
+    //...其他配置
+  css: {
+    //...其他配置
+    postcss: {
+      plugins: [
+        require("autoprefixer"),
+        require("postcss-px-to-viewport")({
+          viewportWidth: 750,  //视窗的宽度，对应的是我们设计稿的宽度，一般是750
+          viewportHeight: 1334, // 视窗的高度，根据750设备的宽度来指定，一般指定1334，也可以不配置
+          unitPrecision: 3,       // 指定`px`转换为视窗单位值的小数位数（很多时候无法整除）
+          viewportUnit: 'vw',     // 指定需要转换成的视窗单位，建议使用vw
+          selectorBlackList: ['.ignore', '.hairlines'],  // 指定不转换为视窗单位的类，可以自定义，可以无限添加,建议定义一至两个通用的类名
+          minPixelValue: 1,       // 小于或等于`1px`不转换为视窗单位，你也可以设置为你想要的值
+          mediaQuery: false       // 允许在媒体查询中转换`px`
+        })
+      ]
+    }
+  }
+})
+```
 
 ## 组件
 

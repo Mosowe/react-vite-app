@@ -79,19 +79,15 @@ request.interceptors.response.use(async (response: any) => {
   if (finds && num === 1 && response.status === 200) { // 文件流下载，请求中必须含：export：1，可选fileName，默认时间
     const blob = new Blob([response.data], {type: 'application/vnd.ms-excel'});
     let filename = options[options.method.toUpperCase() === 'GET' ? 'params' : 'data']?.fileName || new Date().Format('YYYY-MM-DD hh:mm:ss');
-    if(window.navigator.msSaveOrOpenBlob) {// 兼容IE10
-      navigator.msSaveBlob(blob,filename);
-    } else {
-      // 创建一个超链接，将文件流赋进去，然后实现这个超链接的单击事件
-      const elink = document.createElement('a');
-      elink.download = filename;
-      elink.style.display = 'none';
-      elink.href = URL.createObjectURL(blob);
-      document.body.appendChild(elink);
-      elink.click();
-      URL.revokeObjectURL(elink.href); // 释放URL 对象
-      document.body.removeChild(elink);
-    }    
+    // 创建一个超链接，将文件流赋进去，然后实现这个超链接的单击事件
+    const elink = document.createElement('a');
+    elink.download = filename;
+    elink.style.display = 'none';
+    elink.href = URL.createObjectURL(blob);
+    document.body.appendChild(elink);
+    elink.click();
+    URL.revokeObjectURL(elink.href); // 释放URL 对象
+    document.body.removeChild(elink);
     return blob
   }
   if (response.status === 200) { // 一般性接口请求

@@ -17,6 +17,12 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@vitejs/plugin-react": "^1.0.0",
+    "autoprefixer": "^10.3.7",
+    "less": "^4.1.2",
+    "postcss": "^8.3.9",
+    "postcss-load-config": "^3.1.0",
+    "postcss-plugin": "^1.0.0",
+    "postcss-px-to-viewport": "^1.1.1",
     "react-router-dom": "^5.3.0",
     "typescript": "^4.3.2",
     "vite": "^2.6.4"

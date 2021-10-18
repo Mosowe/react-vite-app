@@ -2,7 +2,7 @@ import { withRouter,Link } from 'react-router-dom'
 function Home(props: any) {
   return (
     <div className="Home">
-      <p>home</p>
+      <p className="about">home</p>
       <Link to='/user'>user</Link><br/>
       <Link to='/user?id=1111'>user(search)</Link><br/>
       <Link to={{ pathname: '/user', search: 'id=123' }}>user(search)</Link><br/>
