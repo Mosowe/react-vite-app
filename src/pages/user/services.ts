@@ -12,7 +12,7 @@ export const getPageCustomService = () => {
 // 重置密码
 export const resetPassword = (name:any) => { 
   let params = {
-    url: api.loginUserResetPassword,
+    url: api.resetPassword,
     data: {
       name
     }
@@ -31,7 +31,7 @@ export const uploadImage = (formData:any) => {
 // 导出申请清单
 export const exportUrl = () => { 
   let params = {
-    url: api.entrustStorageExport,
+    url: api.exportDetails,
     data: {
       id: 4,
       fileName: '申请商品明细.xls',

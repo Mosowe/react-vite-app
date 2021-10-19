@@ -8,7 +8,8 @@ export default defineConfig({
     react()
   ],
   server: {
-    host:'10.5.9.31'
+    host: '127.0.0.1',
+    port: 8080
   },
   base:'./',
   resolve: {
