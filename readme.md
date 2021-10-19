@@ -24,8 +24,11 @@
 2.  `npm install`
 3.  `npm run dev`
 ### npm
+
 `npm install -g yo`
+
 `npm install -g generator-react-vite-app`
+
 `yo react-vite-app`
 
 
