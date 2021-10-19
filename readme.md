@@ -27,9 +27,9 @@
 
 `npm install -g yo`
 
-`npm install -g generator-react-vite-app`
+`npm install -g generator-vite-react-app`
 
-`yo react-vite-app`
+`yo vite-react-app`
 
 
 ## 更多
