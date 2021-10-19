@@ -19,10 +19,15 @@
     8. typescript语法
 
 ## 使用
-
+### git
 1.  下载`git clone`
 2.  `npm install`
 3.  `npm run dev`
+### npm
+`npm install -g yo`
+`npm install -g generator-react-vite-app`
+`yo react-vite-app`
+
 
 ## 更多
 
