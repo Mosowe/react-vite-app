@@ -1,10 +1,12 @@
-import {useEffect} from 'react'
+import React, {useEffect} from 'react'
 import useCounterModel from '@/store/store'
 import { withRouter, Link } from 'react-router-dom'
 import { Button } from 'antd-mobile'
 function Home(props: any) {
   const model = useCounterModel()
 
+  window.hasOwnProperty('$cancelRequest') ? window.$cancelRequest() : ''
+  
   useEffect(() => {
     console.log('值变了')
   }, [model.count])

@@ -53,9 +53,29 @@ const errorHandler = (response: any) => {
   return response;
 };
 
+// 取消请求
+const cancelAxios:any = [];
+request.interceptors.request.use((config:any) => {
+  const c = config;
+  c.cancelToken = new axios.CancelToken((cancel:any) => {
+    cancelAxios.push(cancel);
+  });
+  return c;
+}, () => {
+  // console.log(error);
+});
+// 触发axios取消事件，挂载到window
+window.$cancelRequest = () => { 
+  cancelAxios.forEach((element:any, index:number) => {
+    element('cancel');
+    delete cancelAxios[index];
+  });
+};
+
+
 // 过滤导出excel错误提示，文件流下载接口声明列表
 const list = [
-  { url: api.entrustStorageExport, type: 'export', export: 1},
+  { url: api.exportDetails, type: 'export', export: 1},
 ];
 
 // 添加请求拦截器

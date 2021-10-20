@@ -64,13 +64,13 @@ function User(props: any) {
         <input type="file" onChange={(e:any) => {setFile(e.target.files[0])}}/>
         <button onClick={() => {imageUpload()}}>点我上传</button>
       </p>
-      <Prompt message={() => { 
+      {/* <Prompt message={() => { 
         if (!leave) { 
           return true
         }
         const r = confirm('确定离开？')
         return r
-      }} when={leave}></Prompt>
+      }} when={leave}></Prompt> */}
     </div>
   )
 }

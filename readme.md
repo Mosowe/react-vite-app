@@ -17,6 +17,7 @@
     6. less预编译
     7. autoprefixer自动补全
     8. typescript语法
+    9. window.$cancelRequest()取消接口请求，**注：项目初始化时没有window这个方法，请求接口后才会挂载**
 
 ## 使用
 ### git

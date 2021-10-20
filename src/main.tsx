@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom'
 import { HashRouter} from 'react-router-dom';
 import './index.css'
 import App from './App'
+// import { cancelRequest } from './axios/axiosConfig'
 
-
+// window.$cancelRequest = cancelRequest // 取消接口请求
 Date.prototype.Format = function (fmt?: string) {
   if (!fmt) { 
     fmt = 'YYYY-MM-DD'
